@@ -2,14 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ page.title }}</title>
+    <title>On the easiest way</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
+<div class="site">
+    {% include header.html %}
 
-{% include navigation.html %}
+    <div id="home">
+        <h1>Blog Posts</h1>
+        <ul class="posts">
+            {% for post in site.posts %}
+            <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a> </li>
+            {% endfor %}
+        </ul>
+    </div>
 
-{{ content }}
-
+    {% include footer.html %}
+</div>
 </body>
 </html>
